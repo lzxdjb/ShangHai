@@ -1,0 +1,57 @@
+
+
+
+
+
+
+
+    General Walkthrough for Struct-Contained Pointer-Passing to Kernels
+        (i)     somestruct instance;
+        (ii)    int* host_ptr = int[4]{1945, 1492, 622, 1066};
+        (iii)   int* dev_ptr;
+        (iv)    cudaMalloc((void**) &(dev_ptr), sizeof(int)*4);
+        (v)     cudaMemcpy(dev_ptr, host_ptr, sizeof(int)*4, cudaMemcpyHostToDevice); 
+        (vi)    instance.field = dev_ptr;
+        (vii)   kernel<<<blox, threds>>>(instance);
+        (viii)  cudaDeviceSynchronize();
+        (ix)    cudaMemcpy(host_ptr, dev_ptr, sizeof(int)*4, cudaMemcpyDeviceToHost);
+        (x)     instance.field = host_ptr;
+    
+        
+      General Documentation of Above Steps
+        1. Allocate device array.
+                cudaMalloc((void**) &(d_arr), sizeof(int)*N);
+        2. Copy array contents from host to device.
+                cudaMemcpy(d_arr, h_1, sizeof(int)*N, cudaMemcpyHostToDevice);
+        3. Point to device pointer in host struct.
+                h_a.arr = d_arr;
+        4. Call kernel with host struct as argument
+                kernel2<<<1, N>>>(h_a);
+                cudaDeviceSynchronize();
+        5. Copy pointer from device to host.
+                cudaMemcpy(h_1, d_arr, sizeof(int)*N, cudaMemcpyDeviceToHost);
+        6. Point to host pointer in host struct (or do something else with it if this is not needed)
+                h_a.arr = h_1;
+
+
+
+
+
+
+
+
+
+
+
+    
+    //         lutLookupIdx = 0b1001...10100
+    //                          \__________/
+    //                               ||
+    //                            lutWidth
+    //
+    //         lutBits = 0b110101.....0001101
+    //                     \________________/
+    //                             ||
+    //                         2^lutWidth
+
+

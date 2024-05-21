@@ -1,0 +1,33 @@
+
+ _______________________________________
+|    General Information for device     | 
+|---------------------------------------|
+|  Name: NVIDIA GeForce RTX 2080 SUPER  |
+|       Compute capability: 7.5         |
+|          Clock rate: 1815000          |
+|     Device copy overlap: Enabled      |
+|   Kernel execition timeout : Enabled  |
+|_______________________________________|
+ 
+ _______________________________________
+|     Memory Information for device     |
+|---------------------------------------|
+|      Total global mem: 8358854656     |
+|       Total constant Mem: 65536       |
+|        Max mem pitch: 2147483647      |
+|        Texture Alignment: 512         |
+|_______________________________________|
+
+ _______________________________________
+|       MP Information for device       | 
+|---------------------------------------|
+|        Multiprocessor count: 48       |
+|        Shared mem per mp: 49152       |
+|         Registers per mp: 65536       |
+|          Threads in warp: 32          |
+|       Max threads per block: 1024     |
+|     maxThreadDims: (1024, 1024, 64)   |
+|maxGridDims: (2147483647, 65535, 65535)|
+|_______________________________________|
+
+

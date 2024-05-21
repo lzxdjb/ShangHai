@@ -1,0 +1,172 @@
+
+
+
+
+
+
+// for use in consolidate.cu
+
+    ///////////////////////////////////////////////
+    printf("\nndCnt: %d", chief_net.nodeCnt);
+    printf("\nedgCnt: %d", chief_net.edgeCnt);
+    printf("\nlutCnt:  %d", chief_net.lutCnt);
+    printf("\nregCnt:  %d", chief_net.regCnt);
+    printf("\nsrcCnt:  %d\n", chief_net.sourceCnt);
+    printf("\n\nsrcIDs:");
+    for (int k=0; k<chief_net.sourceCnt; k++) {
+        printf(" %d", chief_net.sourceIDs[k]);
+    }
+    printf("\nregIndicator:");
+    for (int j=0; j<chief_net.nodeCnt; j++) {
+        printf(" %d", chief_net.regIndicator[j]);
+    }
+    printf("\ntypeIDs:");
+    for (int i=0; i<chief_net.nodeCnt; i++) {
+        printf(" %d", chief_net.typeIDs[i]);
+    }
+    printf("\nlutOffsets:");
+    for (int i=0; i<1+chief_net.lutCnt; i++) {
+        printf(" %d", chief_net.lutOffsets[i]);
+    }
+    printf("\nlutBits:");
+    for (int i=0; i<chief_net.lutCnt; i++) {
+        printf(" %u", chief_net.lutBits[i]);
+    }
+    printf("\noffsets:");
+    for (int i=0; i<1+chief_net.nodeCnt; i++) {
+        printf(" %d", chief_net.offsets[i]);
+    }
+    printf("\ncsr:");
+    for (int i=0; i<chief_net.edgeCnt; i++) {
+        printf(" %d", chief_net.csr[i]);
+    }
+    printf("\n");
+    ///////////////////////////////////////////////
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    ////////////////////////////////////
+    printf("\nndCnt:  %d", *ndCnt);
+    printf("\nedgCnt: %d", *edgCnt);
+    printf("\nlutCnt: %d", *lutCnt);
+    printf("\nregCnt: %d", *regCnt);
+    printf("\nsrcCnt: %d\n", *srcCnt);
+    printf("\nsrcIDs:");
+    for (int k=0; k<*srcCnt; k++) {
+        printf(" %d", host_srcIDs[k]);
+    }
+    printf("\n\nregIndicator:");
+    for (int j=0; j<*ndCnt; j++) {
+        printf(" %d", host_regInd[j]);
+    }
+    printf("\n\ntypeIDs:");
+    for (int i=0; i<*ndCnt; i++) {
+        printf(" %d", host_typeIDs[i]);
+    }
+    printf("\n\nlutOffsets:");
+    for (int i=0; i<1+*lutCnt; i++) {
+        printf(" %d", host_lutOffs[i]);
+    }
+    printf("\n\nlutBits:");
+    for (int i=0; i<*lutCnt; i++) {
+        printf(" %u", host_lutBits[i]);
+    }
+    printf("\n\noffsets:");
+    for (int i=0; i<1+*ndCnt; i++) {
+        printf(" %d", host_offs[i]);
+    }
+    printf("\n\ncsr:");
+    for (int i=0; i<*edgCnt; i++) {
+        printf(" %d", host_csr[i]);
+    }
+    printf("\n\n");
+    ///////////////////////////////////
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//used for debugging parser output in classical.cu
+
+
+    printf("\nnumNodes: %d", *numNodes);
+    printf("\nnumEdges: %d", *numEdges);
+    printf("\nnumLuts:  %d", *numLuts);
+    printf("\nnumRegs:  %d", *numRegs);
+    printf("\nnumSrcs:  %d\n", *numSrcs);
+    printf("\nsrcIDs:");
+    for (int k=0; k<*numSrcs; k++) {
+        printf(" %d", srcIDs[k]);
+    }
+    printf("\n\nregIndicator:");
+    for (int j=0; j<*numNodes; j++) {
+        printf(" %d", regIndicator[j]);
+    }
+    printf("\n\ntypeIDs:");
+    for (int i=0; i<*numNodes; i++) {
+        printf(" %d", typeIDs[i]);
+    }
+    printf("\n\nlutOffsets:");
+    for (int i=0; i<1+*numLuts; i++) {
+        printf(" %d", lutOffsets[i]);
+    }
+    printf("\n\nlutBits:");
+    for (int i=0; i<*numLuts; i++) {
+        printf(" %u", lutBits[i]);
+    }
+    printf("\n\noffsets:");
+    for (int i=0; i<1+*numNodes; i++) {
+        printf(" %d", offsets[i]);
+    }
+    printf("\n\ncsr:");
+    for (int i=0; i<*numEdges; i++) {
+        printf(" %d", csr[i]);
+    }
+
+    printf("\n\n");
+
+
+
+
+
+
+
+
