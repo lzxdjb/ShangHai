@@ -1,9 +1,9 @@
 #include "src/FancyDesign.cuh"
 #include "src/consolidate.cuh"
 #include "src/GancyDesign.cuh"
-#include <unistd.h>
 
 using namespace std;
+#include <unistd.h>
 
 void DebugQ(uint8_t *query)
 {
@@ -145,31 +145,37 @@ int main()
 
     float *LUT = (float *)malloc(sizeof(float) * nh * K * K);
 
+    // float * store = (float *)malloc(sizeof(float) * bs * nh * qlen * klen);
+
     float *store;
+
     checkCudaErrors(cudaMallocHost((void **)&store, sizeof(float) * bs * nh * qlen * klen));
 
     Initial(query, key, LUT, store);
+    // DebugQ(query);
+    // DebugK(key);
+    // exit(0);
+    // DebugLUT(LUT);
+    // DebugLUT(LUT);
+    // DebugStore(store);
 
-    for (int i = 0; i < 3; i++)
+    // int thread = 1024;
+    // if (qlen * klen < thread)
+    // {
+    //     thread = 1;
+    //     while(1)
+    //     {
+    //         if (thread > qlen * klen)
+    //         {
+
+    //         }
+    //     }
+    // }
+
+    // int count = 1 ;
+    for (int i = 0; i < 5; i++)
     {
-
-        solve_base_kernel(query, key, LUT, store);
+        MoreCrazy(query, key, LUT, store);
         cudaDeviceSynchronize();
-
-        solve_stream_kernel(query, key, LUT, store);
-        cudaDeviceSynchronize();
-
-        // MoreFancy(query, key, LUT, store);
-        // cudaDeviceSynchronize();
-
-        FancyStream(query , key , LUT , store);
-        cudaDeviceSynchronize();
-
-        MoreCrazy(query , key , LUT , store);
-        cudaDeviceSynchronize();
-
-
     }
-
-
 }

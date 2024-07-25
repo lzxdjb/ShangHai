@@ -44,3 +44,11 @@ set_target_properties(FancyStream PROPERTIES
 
 
 
+
+add_executable(CrazyStream CrazyStream.cu)
+target_link_libraries(CrazyStream LINK_PUBLIC tinympc ${CUSPARSE_LIBRARY})
+set_target_properties(CrazyStream PROPERTIES
+    CUDA_SEPARABLE_COMPILATION ON
+)
+
+

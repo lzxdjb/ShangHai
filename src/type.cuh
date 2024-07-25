@@ -7,8 +7,8 @@ using namespace std;
 
 typedef double tinytype;  
 
-const int bs = 32;
-const int nh = 32;  
+const int bs = 16;
+const int nh = 16;  
 
 // bs * nh must be bigger than stream size.
 
@@ -30,6 +30,9 @@ const int StreamModulnStreams = 4;
 
 
 const int Fancyworkload = bs; // workload should be the factor of bs
+
+const int workload = nh ; // Basic stream module workload must be the factor of nh
+
 const int FancyStreamWorkLoad = (bs * nh) / StreamModulnStreams; //You can change;
 
 

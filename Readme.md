@@ -51,4 +51,29 @@ type.cuh 可以修改参数
 
 我没有在往上增加ql,nh，因为我的 GPU 很糟糕。
 
-## 具体思想请见实验报告!
+
+## 更新的实验结果 , 直接放弃MoreFancy.
+
+`ql = 32 ; nh = 32`
+
+Time for sequential transfer and execute (ms): 14.427232
+Time for stream execute time (ms): 9.818208
+Time for Ultra execute time (ms): 1.234944
+Time for Crazy execute time (ms): 2.139712
+
+`ql = 32 ; nh = 32`
+
+Time for sequential transfer and execute (ms): 57.120831
+Time for stream execute time (ms): 42.097824
+Time for Ultra execute time (ms): 7.431584
+Time for Crazy execute time (ms): 2.435136
+
+`ql = 64 ; nh = 64`
+
+Time for sequential transfer and execute (ms): 207.039459
+Time for stream execute time (ms): 157.357086
+Time for Ultra execute time (ms): 186.982086
+Time for Crazy execute time (ms): 3.098304
+
+不要再往上增加ql,nh啦!!!!，因为我的 GPU 很糟糕。
+

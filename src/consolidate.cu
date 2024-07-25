@@ -232,7 +232,7 @@ void solve_stream_kernel(uint8_t *query, uint8_t *key, float *LUT, float *store)
 
 
 
-    int workload = nh ; // workload must be the factor of nh
+   
     int i = 0;
     int OutOffset = 0;
     int StreamNumber = 0;
