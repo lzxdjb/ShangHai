@@ -1,12 +1,11 @@
-#include "type.cuh"
+#pragma once
 
-int reader(int* ndCnt, int* edgCnt, int* lutCnt, int* regCnt, int*srcCnt,
-        std::vector<int>& regInd_vec,
-        std::vector<int>& typeIDs_vec,
-        std::vector<int>& srcIDs_vec,
-        std::vector<int>& offs_vec,
-        std::vector<int>& csr_vec,
-        std::vector<int>& lutOffs_vec,
-        std::vector<unsigned int>& lutBts_vec);
+#include "Kernel.cuh"
 
-// void fool();
+void solve_base_kernel(uint8_t * query , uint8_t *  key , float *  LUT , float * store);
+
+
+void solve_stream_kernel(uint8_t * query , uint8_t *  key , float *  LUT , float * store);
+
+void FancyAllocation(uint8_t *query, uint8_t *key, float *LUT, float *store);
+
