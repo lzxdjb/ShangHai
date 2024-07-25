@@ -90,3 +90,27 @@ __device__ void  KernelkeyDebug(DebugStruct * d_debug, u_int8_t * key)
         SharedLUT[i] = d_LUT[i];
     }
 }
+
+
+
+__device__ void  CorrectLookUpAndStore(float * d_store , uint8_t * d_query ,uint8_t * d_key , int StorePosition , int QVisitPoint , int KVisitPoint , float * d_LUT , int blockIdx) 
+{
+    uint8_t dot_product = 0;
+    uint8_t q = 0; //row
+    uint8_t k = 0; //column
+    uint8_t Search_result = 0;
+
+    int MapId = blockIdx % nh;
+
+    for(int i = 0 ; i < dim ; i ++)
+    {
+        q = d_query[QVisitPoint + i];
+        k = d_key[KVisitPoint + i];
+        Search_result = d_LUT[MapId * K * K + q * K + k];
+        dot_product += Search_result;
+    }
+
+    d_store[StorePosition] = dot_product;
+
+
+}

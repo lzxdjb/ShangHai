@@ -175,6 +175,9 @@ void solve_base_kernel(uint8_t *query, uint8_t *key, float *LUT, float *store)
 
     checkCudaErrors(cudaMemcpy(h_debugTool, d_debugTool, sizeof(DebugStruct), cudaMemcpyDeviceToHost));
 
+    // Debug2Store(store);
+
+
 
     cudaEventDestroy(startEvent);
     cudaEventDestroy(stopEvent);
@@ -189,7 +192,6 @@ void solve_base_kernel(uint8_t *query, uint8_t *key, float *LUT, float *store)
 
     // debug(h_debugTool);
 
-    // Debug2Store(store);
 }
 
 void solve_stream_kernel(uint8_t *query, uint8_t *key, float *LUT, float *store)
@@ -332,6 +334,8 @@ void solve_stream_kernel(uint8_t *query, uint8_t *key, float *LUT, float *store)
     ///// End Time Record
     printf("Time for stream execute time (ms): %f\n", ms);
 
+    // Debug2Store(store);
+
     cudaEventDestroy(startEvent);
     cudaEventDestroy(stopEvent);
     
@@ -354,7 +358,6 @@ void solve_stream_kernel(uint8_t *query, uint8_t *key, float *LUT, float *store)
     // Debug2K(key);
     // Debug2Q(query);
     // Debug2LUT(LUT);
-    // Debug2Store(store);
 
 ///// DebugEnd
 

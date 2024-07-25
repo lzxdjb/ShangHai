@@ -18,20 +18,22 @@ __global__ void BaseKernel(uint8_t * d_query , uint8_t *  d_key , float *  d_LUT
 
     int StorePosition =  BlockIdx * qlen * klen + (ThreadIdx + offset);
 
-    __shared__ float SharedLUT[K * K];
-    uint8_t query[dim];
-    uint8_t key[dim];
+    // __shared__ float SharedLUT[K * K];
+    // uint8_t query[dim];
+    // uint8_t key[dim];
 
-    uint8_t EncodingNumberQ = 0;
-    uint8_t EncodingNumberK = 0;
+    // uint8_t EncodingNumberQ = 0;
+    // uint8_t EncodingNumberK = 0;
 
 
     // printf("asdfasdfasdf\n");
-    CopyMap(d_LUT , SharedLUT , BlockIdx);
-    CopyQ_K(query , key , d_query , d_key , QVisitPoint , KVisitPoint);
-    Encoding(query , key , &EncodingNumberQ , &EncodingNumberK);
+    // CopyMap(d_LUT , SharedLUT , BlockIdx);
+    // CopyQ_K(query , key , d_query , d_key , QVisitPoint , KVisitPoint);
+    // Encoding(query , key , &EncodingNumberQ , &EncodingNumberK);
 
-    LooKUpAndStore(d_store , EncodingNumberQ , EncodingNumberK , SharedLUT , StorePosition);
+    // LooKUpAndStore(d_store , EncodingNumberQ , EncodingNumberK , SharedLUT , StorePosition);
+
+    CorrectLookUpAndStore(d_store , d_query , d_key , StorePosition ,  QVisitPoint ,  KVisitPoint , d_LUT , BlockIdx);
     
     
 
@@ -56,20 +58,23 @@ __global__ void StreamKernel(uint8_t * d_query , uint8_t *  d_key , float *  d_L
 
     int StorePosition =  BlockIdx * qlen * klen + (ThreadIdx + offset);
 
-    __shared__ float SharedLUT[K * K];
-    uint8_t query[dim];
-    uint8_t key[dim];
+    // __shared__ float SharedLUT[K * K];
+    // uint8_t query[dim];
+    // uint8_t key[dim];
 
-    uint8_t EncodingNumberQ = 0;
-    uint8_t EncodingNumberK = 0;
+    // uint8_t EncodingNumberQ = 0;
+    // uint8_t EncodingNumberK = 0;
 
 
-    // printf("asdfasdfasdf\n");
-    CopyMap(d_LUT , SharedLUT , BlockIdx);
-    CopyQ_K(query , key , d_query , d_key , QVisitPoint , KVisitPoint);
-    Encoding(query , key , &EncodingNumberQ , &EncodingNumberK);
+    // // printf("asdfasdfasdf\n");
+    // CopyMap(d_LUT , SharedLUT , BlockIdx);
+    // CopyQ_K(query , key , d_query , d_key , QVisitPoint , KVisitPoint);
+    // Encoding(query , key , &EncodingNumberQ , &EncodingNumberK);
 
-    LooKUpAndStore(d_store , EncodingNumberQ , EncodingNumberK , SharedLUT , StorePosition);
+    // LooKUpAndStore(d_store , EncodingNumberQ , EncodingNumberK , SharedLUT , StorePosition);
+    
+
+    CorrectLookUpAndStore(d_store , d_query , d_key , StorePosition ,  QVisitPoint ,  KVisitPoint , d_LUT , BlockIdx);
     
     
 
@@ -150,7 +155,8 @@ __global__ void MoreFancykernel(StreamStruct * d_IntergralStream , DebugStruct *
 
         LooKUpAndStore(d_IntergralStream->Store, EncodingNumberQ, EncodingNumberK, d_IntergralStream->LUT, StorePosition);
 
-        KernelMapDebug(debugTool, d_IntergralStream->LUT);
+
+        // KernelMapDebug(debugTool, d_IntergralStream->LUT);
         // KernelqueryDebug(d_debug, query);
         // KernelkeyDebug(d_debug, key);
         // KernelEncodingDebug(d_debug, EncodingNumberQ, EncodingNumberK);

@@ -30,7 +30,7 @@ const int StreamModulnStreams = 4;
 
 
 const int Fancyworkload = bs; // workload should be the factor of bs
-const int FancyStreamWorkLoad = (bs * nh) / nStreams; //You can change;
+const int FancyStreamWorkLoad = (bs * nh) / StreamModulnStreams; //You can change;
 
 
 struct DebugStruct{

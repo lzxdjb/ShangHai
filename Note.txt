@@ -1,1 +1,4 @@
 nvvp -vm /usr/lib/jvm/java-8-openjdk-amd64/jre/bin/java
+
+
+你读的行向量和列向量就是对应LUT的二维索引，直接查dim个LUT的结果加起来就行了

@@ -22,6 +22,13 @@ __device__ void KernelEncodingDebug( DebugStruct *d_debug ,u_int8_t  EncodingNum
 __device__ void  FancyCopyMap(float * d_LUT , float * SharedLUT );
 
 
+__device__ void  CorrectLookUpAndStore(float * d_store , uint8_t * d_query ,uint8_t * d_key , int StorePosition , int QVisitPoint , int KVisitPoint , float * d_LUT , int blockIdx); 
+
+
+
+
+
+
 
 
 
